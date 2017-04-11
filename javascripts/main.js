@@ -9,7 +9,11 @@ $.ajax("./db/dinosaurs.json").done(function(data) {
 
 function makeDom(myArrayToPrint) {
 	var myDomString = "";
+	var counter = 0;
 	for (var i = 0; i < myArrayToPrint.length; i++) {
+		if (counter % 3 === 0) {
+			myDomString += `<div class="row">`;
+		}
 		myDomString += `<div class="dinoCard">`;
 		myDomString += `<div class="row">`;
   		myDomString	+= `<div class="col-md-3 col-md-3 col-md-3">`;
