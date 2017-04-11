@@ -11,15 +11,38 @@ function makeDom(myArrayToPrint) {
 	var myDomString = "";
 	for (var i = 0; i < myArrayToPrint.length; i++) {
 		myDomString += `<div class="dinoCard">`;
+		myDomString += `<div class="row">`;
+  		myDomString	+= `<div class="col-md-3 col-md-3 col-md-3">`;
+    	myDomString += `<div class="thumbnail">`;
 		myDomString += `<header><h1>${myArrayToPrint[i].type}</h1></header>`
 		myDomString += `<section>`;
 		myDomString += `<img src="${myArrayToPrint[i].img}">`;
 		myDomString += `<p class="bio">${myArrayToPrint[i].bio}</p>`;
 		myDomString += `</section>`;
 		myDomString += `<footer>${myArrayToPrint[i].info}</footer>`;
-		myDomString += `</div>`;
+		myDomString += `</div></div></div></div>`;
 
 	}
 	$("#dinosaurs").append(myDomString);
 }
+
+$("#dinosaurs").on("click", ".dinoCard", function(e) {
+	$(".dinoCard").removeClass("dottedBorder");
+	$(this).addClass("dottedBorder");
+	$("#textbox").val("").focus();
+});
+
+$("#textbox").keyup(mirrorText);
+
+function mirrorText(e) {
+	var selectedCard = $(".dottedBorder");
+	var bio = $(".dottedBorder").find("p.bio");
+	var bioTyped = $("#textbox").val();
+	bio.html(bioTyped);
+	console.log("selectedCard", selectedCard);
+}
+
+
+
+
 
